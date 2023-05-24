@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <script>
+    function validateForm() {
+      var firstName = document.getElementById("firstName").value;
+      var password = document.getElementById("password").value;
+      var email = document.getElementById("email").value;
+      var mobile = document.getElementById("mobile").value;
+      var lastName = document.getElementById("lastName").value;
+      var address = document.getElementById("address").value;
+
+      var nameRegex = /^[a-zA-Z]{6,}$/;
+      var passwordRegex = /^.{6,}$/;
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var mobileRegex = /^\d{10}$/;
+
+      if (!nameRegex.test(firstName)) {
+        alert("First Name should contain alphabets only and be at least 6 characters long.");
+        return false;
+      }
+
+      if (!passwordRegex.test(password)) {
+        alert("Password should be at least 6 characters long.");
+        return false;
+      }
+
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      if (!mobileRegex.test(mobile)) {
+        alert("Mobile Number should contain 10 digits only.");
+        return false;
+      }
+
+      if (lastName.trim() === "") {
+        alert("Last Name cannot be empty.");
+        return false;
+      }
+
+      if (address.trim() === "") {
+        alert("Address cannot be empty.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h2>Registration</h2>
+  <form onsubmit="return validateForm()">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+    <br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br><br>
+    <label for="mobile">Mobile Number:</label>
+    <input type="tel" id="mobile" name="mobile" required>
+    <br><br>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+    <br><br>
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" required></textarea>
+    <br><br>
+    <button type="submit">Register</button>
+  </form>
+</body>
+</html>
